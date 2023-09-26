@@ -1,0 +1,12 @@
+spring:     
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher  
+
+      
+security:
+  jwt:
+    expiracao: 30
+    chave-assinatura: YSBsZW1icmUgw6kgYnJhbmNh
+
+server.port: 8888

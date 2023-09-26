@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Cliente API
+  version: 1.0.0
+paths:
+  /clientes:
+    post:
+      summary: Cadastrar cliente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cliente'
+      parameters:
+        - in: header
+          name: Authorization
+          description: Token de autenticação no formato Bearer
+          schema:
+            type: string
+            default: Bearer <token_aqui>        
+      responses:
+        '200':
+          description: Cliente cadastrado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+              
+
+components:
+  schemas:
+    Cliente:
+      type: object
+      properties:
+        cliente:
+          type: string
+        nome:
+          type: string
+        sobrenome:
+          type: string
+        cpf:
+          type: string
+          pattern: '^\d{3}\.\d{3}\.\d{3}-\d{2}$'
+          description: CPF no formato xxx.xxx.xxx-xx
+        email:
+          type: string
+        telefone:
+          type: string
+        login:
+          type: string
+        password:
+          type: string
+          pattern: '^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$'
+          description: Mínimo de 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula e um número
